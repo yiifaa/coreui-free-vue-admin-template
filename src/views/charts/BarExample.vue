@@ -1,39 +1,32 @@
+<template>
+  <div style="height:250px;"></div>
+</template>
+
 <script>
-import { Bar } from 'vue-chartjs'
-import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips'
+import echarts from 'echarts'
+
 
 export default {
-  extends: Bar,
+
   mounted () {
-    // Overwriting base render method with actual data.
-    this.renderChart(
-      {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        datasets: [
-          {
-            label: 'GitHub Commits',
-            backgroundColor: '#f87979',
-            data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
-          }
-        ]
-      },
-      {
-        responsive: true,
-        maintainAspectRatio: true,
-        tooltips: {
-          enabled: false,
-          custom: CustomTooltips,
-          intersect: true,
-          mode: 'index',
-          position: 'nearest',
-          callbacks: {
-            labelColor: function (tooltipItem, chart) {
-              return { backgroundColor: chart.data.datasets[tooltipItem.datasetIndex].backgroundColor }
-            }
-          }
-        }
-      }
-    )
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(this.$el, 'light');
+    // 绘制图表
+    myChart.setOption({
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        xAxis: {
+            data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    });
   }
 }
 </script>

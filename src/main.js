@@ -6,10 +6,12 @@ import 'core-js/es7/array'
 // import cssVars from 'css-vars-ponyfill'
 import Vue from 'vue'
 import BootstrapVue from 'bootstrap-vue'
+import ElementUI from 'element-ui'
 import App from './App'
 import router from './router'
 
 Vue.use(BootstrapVue)
+Vue.use(ElementUI)
 
 /* eslint-disable no-new */
 new Vue({
