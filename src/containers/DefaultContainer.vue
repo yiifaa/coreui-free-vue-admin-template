@@ -29,7 +29,6 @@
         </div>
       </main>
       <AppAside fixed>
-        <!--aside-->
         <DefaultAside/>
       </AppAside>
     </div>
@@ -85,3 +84,11 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+main.main {
+  div.container-fluid {
+    padding: 0 24px;
+  }
+}
+</style>
+

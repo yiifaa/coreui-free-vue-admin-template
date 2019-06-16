@@ -11,6 +11,20 @@ export default {
     },
     {
       title: true,
+      name: '系统管理',
+      class: '',
+      wrapper: {
+        element: '',
+        attributes: {}
+      }
+    },
+    {
+      name: '菜单管理',
+      url: '/common/menu',
+      icon: 'icon-map icons'
+    },
+    {
+      title: true,
       name: 'Theme',
       class: '',
       wrapper: {

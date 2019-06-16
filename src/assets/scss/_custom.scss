@@ -1,1 +1,16 @@
 // Here you can add other styles
+.el-card__header {
+    padding : 10px 18px;
+}
+
+
+
+.box-card {
+    min-height: 450px;
+
+    .box-title {
+        display: inline-block;
+        line-height: 29px;
+        height: 29px;
+    }
+}

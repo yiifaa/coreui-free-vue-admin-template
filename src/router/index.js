@@ -57,6 +57,7 @@ const Register = () => import('@/views/pages/Register')
 // Users
 const Users = () => import('@/views/users/Users')
 const User = () => import('@/views/users/User')
+const Menu = () => import('@/views/commons/Menu')
 
 Vue.use(Router)
 
@@ -75,6 +76,20 @@ export default new Router({
           path: 'dashboard',
           name: 'Dashboard',
           component: Dashboard
+        }, {
+          path: 'common',
+          redirect: '/common/menu',
+          name: '系统管理',
+          component: {
+            render (c) { return c('router-view') }
+          },
+          children: [
+            {
+              path: 'menu',
+              name: '菜单管理',
+              component: Menu
+            }
+          ]  
         },
         {
           path: 'theme',
