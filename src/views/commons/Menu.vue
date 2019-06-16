@@ -117,6 +117,11 @@ export default {
             axios.post('/common/menu/save', domain)
                  .then(resp => {
                     self.$set(self.menus, 0, resp.data)
+                    this.$notify({
+                        title: '操作成功',
+                        message: '您已成功保存数据！',
+                        type: 'success'
+                    })
                  })
         },
 
@@ -124,11 +129,35 @@ export default {
             let id = this.domain.id
             let self = this
             if(!!id) {
-                axios.post('/common/menu/remove', {
-                    id
-                })
-                .then(resp => {
-                    self.$set(self.menus, 0, resp.data)
+                this.$confirm('此操作将永久删除数据, 是否继续?', '操作提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    axios.post('/common/menu/remove', {
+                        id
+                    })
+                    .then(resp => {
+                        self.$set(self.menus, 0, resp.data)
+                        this.$notify({
+                            title: '操作成功',
+                            message: '您已成功删除数据！',
+                            type: 'success'
+                        })
+                    })
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: '已取消删除'
+                    });          
+                });
+
+                
+            } else {
+                this.$notify({
+                    title: '操作警告',
+                    message: '不能删除根节点或新节点！',
+                    type: 'error'
                 })
             }
         }
